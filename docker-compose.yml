@@ -4,28 +4,28 @@ version: "3.1"
 # Setup services
 services:
   # Node 1
-  docker-ubuntu-sftp-dika-1:
-    container_name: docker-ubuntu-sftp-dika-1
-    image: docker-ubuntu-sftp-dika
+  docker-ubuntu-sftp-1:
+    container_name: docker-ubuntu-sftp-1
+    image: docker-ubuntu-sftp
     restart: no
     ports:
       - 2220:22
     networks:
       - ubuntu-sftp-net
     volumes:
-      - ./sftp-dika-1:/home/dika
+      - ./sftp-docker-1:/home/sftp
 
   # Node 2
-  docker-ubuntu-sftp-dika-2:
-    container_name: docker-ubuntu-sftp-dika-2
-    image: docker-ubuntu-sftp-dika
+  docker-ubuntu-sftp-2:
+    container_name: docker-ubuntu-sftp-2
+    image: docker-ubuntu-sftp
     restart: no
     ports:
       - 2221:22
     networks:
       - ubuntu-sftp-net
     volumes:
-      - ./sftp-dika-2:/home/dika
+      - ./sftp-docker-2:/home/sftp
 
 # Networks
 networks:

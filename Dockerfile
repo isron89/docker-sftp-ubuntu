@@ -9,13 +9,13 @@ RUN apt-get install -y openssh-server
 RUN apt-get install -y iputils-ping
 
 # Konfigurasi openssh
-RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 dika
-RUN echo 'dika:dika' | chpasswd
+RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 sftp
+RUN echo 'sftp:password' | chpasswd
 
 # Membuat direktori untuk kirim dan terima file
-RUN mkdir -p /home/dika
-RUN chown dika /home/dika
-RUN chmod 755 /home/dika
+RUN mkdir -p /home/sftp
+RUN chown sftp /home/sftp
+RUN chmod 755 /home/sftp
 
 # Start ssh service
 RUN service ssh start
