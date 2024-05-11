@@ -1,39 +1,33 @@
 # Version
 version: "3.1"
 
-# Setup
+# Setup services
 services:
-  # PHP
-  docker-sftp-dika-1:
-    container_name: docker-sftp-dika-1
-    image: docker-sftp-dikaa
-    restart: always
+  # Node 1
+  docker-ubuntu-sftp-dika-1:
+    container_name: docker-ubuntu-sftp-dika-1
+    image: docker-ubuntu-sftp-dika
+    restart: no
     ports:
       - 2220:22
     networks:
-      - sftp-net
+      - ubuntu-sftp-net
     volumes:
-      - ./sftp-dika-1:/home/dika/upload
-    environment:
-      USERNAME: dika
-      PASSWORD: dika
+      - ./sftp-dika-1:/home/dika
 
-  docker-sftp-dika-2:
-    container_name: docker-sftp-dika-2
-    image: docker-sftp-dikaa
-    restart: always
+  # Node 2
+  docker-ubuntu-sftp-dika-2:
+    container_name: docker-ubuntu-sftp-dika-2
+    image: docker-ubuntu-sftp-dika
+    restart: no
     ports:
       - 2221:22
     networks:
-      - sftp-net
+      - ubuntu-sftp-net
     volumes:
-      - ./sftp-dika-2:/home/dika/upload
-    environment:
-      USERNAME: dika
-      PASSWORD: dika
+      - ./sftp-dika-2:/home/dika
 
+# Networks
 networks:
-  sftp-net:
-    name: sftp-net
-    # driver: bridge
-    # external: true
+  ubuntu-sftp-net:
+    name: ubuntu-sftp-net
